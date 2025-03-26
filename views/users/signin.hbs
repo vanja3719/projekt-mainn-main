@@ -1,0 +1,34 @@
+<div class="min-h-screen flex items-center justify-center ">
+    <div class="border bg-white p-8 shadow-lg rounded-lg w-full max-w-md">
+        <div class="text-2xl mb-4 font-semibold text-center">Prijava korisnika</div>
+
+        <form method="post" action="/users/signin" class="grid grid-cols-1 gap-3">
+            <label for="email" class="text-gray-700">E-mail adresa</label>
+            <input type="email" name="email" maxlength="100" required
+                class="p-2 border rounded w-full focus:ring-2 focus:ring-blue-500 " />
+
+            <label for="password" class="text-gray-700">Zaporka</label>
+            <input type="password" name="password" required
+                class="p-2 border rounded w-full focus:ring-2 focus:ring-blue-500" />
+
+            <input type="submit" value="Prijava"
+                class="w-full p-3 bg-green-600 text-white font-semibold hover:bg-green-800 rounded cursor-pointer mt-2" />
+        </form>
+
+        {{#if error_validation}}
+        <p class="text-red-600 mt-3 text-center">Dogodila se greška u provjeri podataka!</p>
+        {{/if}}
+
+        {{#if error_database}}
+        <p class="text-red-600 mt-3 text-center">Dogodila se greška u radu baze podataka!</p>
+        {{/if}}
+
+        {{#if unknown_user}}
+        <p class="text-red-600 mt-3 text-center">Korisnik ne postoji!</p>
+        {{/if}}
+
+        {{#if invalid_password}}
+        <p class="text-red-600 mt-3 text-center">Zaporka nije točna!</p>
+        {{/if}}
+    </div>
+</div>

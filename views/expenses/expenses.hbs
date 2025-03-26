@@ -1,0 +1,14 @@
+<h1 class="font-semibold text-2xl">Pregled troškova</h1>
+<a href="expenses/add"
+    class="text-center mt-5 w-full inline-block bg-green-700 text-white px-3 py-3 rounded-lg text-lg font-semibold hover:bg-green-600 transition">Dodaj
+    trošak</a>
+
+{{#each items}}
+<div class="mt-5 flex items-center bg-green-500 text-white text-xl font-bold p-4 mb-2 rounded">
+    <div class="flex-1">
+        <div>{{name}}</div>
+        <div class="text-sm">{{amount}} €</div>
+        <div class="text-sm text-gray-300">{{date}}</div>
+    </div>
+</div>
+{{/each}}

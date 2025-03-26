@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/stylesheets/output.css">
+</head>
+<body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
+
+    <header class="bg-green-600 text-white p-4 shadow-lg">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold">Praćenje Troškova</a>
+            <nav>
+                {{#unless userEmail}}
+                    <a class="py-1 px-3 bg-white text-black rounded hover:bg-gray-200" href="/users/signin">Prijava</a>
+                    <a class="py-1 px-3 bg-white text-black rounded hover:bg-gray-200" href="/users/signup">Registracija</a>
+                {{/unless}}
+                {{#if userEmail}}
+                    <a class="py-1 px-3 bg-white text-black rounded hover:bg-gray-200" href="/expenses">Pregled</a>
+                    <a class="py-1 px-3 bg-red-600 text-black rounded hover:bg-red-400" href="/users/signout">Odjava</a>
+                {{/if}}
+            </nav>
+        </div>
+    </header>
+
+    <main class="m-2 p-4 bg-white rounded-lg shadow-md flex-1">
+        {{{body}}}
+    </main>
+
+    <footer class="bg-green-600 text-white p-4 mt-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2025 Moja Express Aplikacija. Sva prava su zadržana.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

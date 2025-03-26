@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodavanje Troškova</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans text-gray-900">
+    <div class="border-2 container mx-auto p-6 max-w-full bg-white shadow-md rounded-lg mt-10">
+        <h1 class="text-3xl font-semibold text-center mb-6">Dodaj Trošak</h1>
+        <form  action="/expenses/addExpense" method="POST">
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-medium text-gray-700">Naziv Troška:</label>
+                <input type="text" id="name" name="name" class="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500" required>
+            </div>
+            <div class="mb-4">
+                <label for="amount" class="block text-sm font-medium text-gray-700">Iznos:</label>
+                <input type="number" id="amount" name="amount" step="0.01" class="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500" required>
+            </div>
+            <div class="mb-4">
+                <label for="date" class="block text-sm font-medium text-gray-700">Datum:</label>
+                <input type="date" id="date" name="date" class="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500" required>
+            </div>
+            <div class="mb-4">
+                <label for="category" class="block text-sm font-medium text-gray-700">Kategorija:</label>
+                <select id="category" name="category" class="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                    <option value="food">Hrana</option>
+                    <option value="transport">Prijevoz</option>
+                    <option value="utilities">Higijena</option>
+                    <option value="entertainment">Zabava</option>
+                    <option value="other">Ostalo</option>
+                </select>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="w-full py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">Spremi Trošak</button>
+            </div>
+        </form>
+    </div>
+        {{#if error_validation}}
+        <p Class="text-red-600 mt-3 text-center">Dogodila se greška u provjeri podataka!</p>
+        {{/if}}
+
+        {{#if error_database}}
+        <p class="text-red-600 mt-3 text-center">Dogodila se greška prilikom spremanja u bazu podataka!</p>
+        {{/if}}
+
+        {{#if success}}
+        <p class="text-green-600 mt-3 text-center">Trošak je uspješno dodan!</p>
+        {{/if}}
+</body>
+</html>
